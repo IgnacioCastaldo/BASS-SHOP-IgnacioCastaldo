@@ -1,19 +1,19 @@
 import NavBar from './components/NavBar/NavBar';
-import ItemListContainer from './components/NavBar/ItemListContainer/ItemListContainer';
+import ItemListContainer from './components/ItemListContainer/ItemListContainer';
 import './App.css';
+
 
  
 
 function App() {
-  /* const greeting = {name:'GREETING'} */
   return (
-    <div>
+    <body>
       <NavBar />
       <div>
-        <ItemListContainer name='greeting' />
+        <ItemListContainer name='BASS  SHOP' />
       </div>
       
-    </div>
+    </body>
   );
 }
 
