@@ -1,21 +1,48 @@
-import ItemCount from "./ItemCount";
+import { useEffect, useState } from "react";
+import itemsData from "../../Data/Data.js";
+import ItemList from "../ItemList/ItemList";
+import "./ItemListContainer.css"
 
-function ItemListContainer(props) {
-    const onAdd = (quiantity) => {
-        alert(`agregados ${quiantity} unidades`)
-      };
+
+function getProducts() {
+  return new Promise((resolve) => {
+    setTimeout(() => resolve(itemsData), 2000);
+  });
+ };
+
+ /* getProducts().then(
+  (respuesta) => console.log(respuesta)
+ ).catch(
+  (errormsg) => console.log(errormsg)
+ ).finally(
+  () => console.log('final de promesa')
+ ) */
+
+
+export default function ItemListContainer({ title }) {
+    const [data, setdata] = useState([]);
+
+    useEffect(() => {
+      getProducts().then((respuesta) => {
+        setdata(respuesta);
+      });
+    }, []);
 
     return (
-        <>
-        <h1 className=''>{props.name}</h1>
-        <div>
-        <ItemCount  initial={1} stock={5} onAdd={onAdd}/>
+      <>
+      <div className='itemlist__container'>
+      <div>
+        <h2>{title}</h2>
       </div>
+      <div className='items'>
+        <ItemList data={data} />
+      </div>
+    </div>
       </>
-    )
+      
+    );
 }
 
 
-export default ItemListContainer; 
 
- 
+

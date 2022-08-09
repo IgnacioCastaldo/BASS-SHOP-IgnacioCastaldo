@@ -1,19 +1,8 @@
-/* body {
-  background-color: rgb(34, 34, 34);
-} */
-
-h1 {
-  display: flex;
-  justify-content: center;
+.main__container {
+  padding: 20px;
 }
 
-h3 {
-  display: flex;
-  justify-content: center;
-}
-
-.btn-1 {
-  display: flex;
-  justify-content: center;
+.main__container button {
+  margin-bottom: 30px;
 }
 

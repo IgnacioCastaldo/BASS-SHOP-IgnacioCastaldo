@@ -9,10 +9,9 @@ function App() {
   return (
     <body>
       <NavBar />
-      <div>
-        <ItemListContainer name='BASS  SHOP' />
+      <div className='main__container'>
+        <ItemListContainer title={'BASS SHOP'} />
       </div>
-      
     </body>
   );
 }
