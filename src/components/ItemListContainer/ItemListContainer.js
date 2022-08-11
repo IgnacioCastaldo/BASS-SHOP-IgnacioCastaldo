@@ -8,39 +8,33 @@ function getProducts() {
   return new Promise((resolve) => {
     setTimeout(() => resolve(itemsData), 2000);
   });
- };
+};
 
- /* getProducts().then(
-  (respuesta) => console.log(respuesta)
- ).catch(
-  (errormsg) => console.log(errormsg)
- ).finally(
-  () => console.log('final de promesa')
- ) */
+
 
 
 export default function ItemListContainer({ title }) {
-    const [data, setdata] = useState([]);
+  const [data, setdata] = useState([]);
 
-    useEffect(() => {
-      getProducts().then((respuesta) => {
-        setdata(respuesta);
-      });
-    }, []);
+  useEffect(() => {
+    getProducts().then((respuesta) => {
+      setdata(respuesta);
+    });
+  }, []);
 
-    return (
-      <>
+  return (
+    <>
       <div className='itemlist__container'>
-      <div>
-        <h2>{title}</h2>
+        <div>
+          <h2>{title}</h2>
+        </div>
+        <div className='items'>
+          <ItemList data={data} />
+        </div>
       </div>
-      <div className='items'>
-        <ItemList data={data} />
-      </div>
-    </div>
-      </>
-      
-    );
+    </>
+
+  );
 }
 
 

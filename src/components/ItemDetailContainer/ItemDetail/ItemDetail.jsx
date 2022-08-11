@@ -4,9 +4,11 @@ import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
-import ItemCount from '../ItemCount/ItemCount';
+import './ItemDetail.css'
 
-function Item({ name, category, price, stock, img }) {
+
+
+function ItemDetail({ name, category, price, stock, img }) {
 return (
     <Card sx={{ maxWidth: 345 }}>
       <CardMedia component="img" alt={name} height="140" image={img} />
@@ -16,10 +18,10 @@ return (
         <Typography variant="body2" color="text.secondary">${price}</Typography>
       </CardContent>
       <CardActions>
-      <ItemCount initial={1} stock={stock} />
+      
       </CardActions>
     </Card>
   );
 }
 
-export default Item
+export default ItemDetail
