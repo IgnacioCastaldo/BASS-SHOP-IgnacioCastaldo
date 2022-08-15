@@ -1,50 +1,43 @@
 import React from "react";
+import "./ItemDetailContainer.css";
 import { useEffect, useState } from "react";
-import itemsData from "../../Data/Data";
-import "./ItemiDetailContainer.css";
-import ItemCount from '../ItemCount/ItemCount.jsx'
-
-function getProducts() {
-  return new Promise((resolve, reject) => {
-    setTimeout(() => resolve(itemsData[1]), 2000);
-  });
-}
+import itemsData from "../../Data/Data.js";
+import ItemDetail from "../ItemDetail/ItemDetail";
+import { useParams } from "react-router-dom";
 
 function ItemDetailContainer({ title }) {
-  const [item, setItem] = useState([]);
+  const [data, setData] = useState([]);
+  const id = useParams().id;
+  console.log(useParams());
+
+  function getProducts() {
+    return new Promise((resolve) => {
+      let itemRequested = itemsData.find((elemento) => elemento.key == id);
+      setTimeout(() => resolve(itemRequested), 1500);
+    });
+  }
 
   useEffect(() => {
-    getProducts().then((respuesta) => {
-      setItem(respuesta);
+    getProducts().then((res) => {
+      setData(res);
     });
   }, []);
 
   return (
-    <div className='bg-dark'>
-        <div className='caja'>
-           <div>
-        <h2 className='text-white'>{title}</h2>
+    <div className="itemdetail__container">
+      <div>
+        <h2>{title}</h2>
       </div>
-      <div className="card">
-        <div className="card-img">
-          <img src={item.img} alt="imagen" />
-        </div>
-        <div className="card-detail">
-          <h1>{item.name}</h1>
-          <h3> {item.category}</h3>
-          <h3>$ {item.price}</h3>
-          <p>
-            El Precision bass ofrece un sonido más agresivo, redondo y menos
-            definido que el Fender Jazz Bass,​ por lo que es un instrumento
-            especialmente apreciado por músicos de rock y estilos afines.
-          </p>
-          <div>
-            <ItemCount initial={1} stock={5}/>
-          </div>
-        </div>
-      </div> 
-        </div>
-      
+      <div>
+        <ItemDetail
+          name={data.name}
+          price={data.price}
+          stock={data.stock}
+          img={data.img}
+          category={data.category}
+          description={data.description}
+        />
+      </div>
     </div>
   );
 }

@@ -1,0 +1,12 @@
+.itemdetail__container {
+  background-color: rgb(9, 29, 46);
+  border-radius: 20px;
+  color: white;
+  margin: 0 auto;
+  padding: 20px;
+  width: 95%;
+}
+
+.itemdetail__container h2 {
+  margin-bottom: 10px;
+}

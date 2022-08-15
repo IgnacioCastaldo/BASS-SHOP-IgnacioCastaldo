@@ -4,19 +4,21 @@ import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
-import ItemCount from '../ItemCount/ItemCount';
 
-function Item({ name, category, price, stock, img }) {
+import { Link } from "react-router-dom";
+
+function Item({ name, category, price, stock, img, id, desciption }) {
 return (
     <Card sx={{ maxWidth: 345 }}>
       <CardMedia component="img" alt={name} height="140" image={img} />
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">{name}</Typography>
         <Typography gutterBottom variant="h5" component="div">{category}</Typography>
-        <Typography variant="body2" color="text.secondary">${price}</Typography>
+        <Typography gutterBottom variant="h5" component="div">{desciption}</Typography>
+        <Typography variant="body2" color="text.secondary">$ {price}</Typography>
       </CardContent>
       <CardActions>
-      <ItemCount initial={1} stock={stock} />
+        <Link to={`/detail/${id}`}>Detalle</Link>
       </CardActions>
     </Card>
   );
